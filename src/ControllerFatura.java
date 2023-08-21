@@ -9,10 +9,25 @@ public class ControllerFatura {
 
    
     public ControllerFatura() {
-        this.faturas = new ArrayList<Fatura>();
+        this.faturas = new ArrayList<>();
     }
-    public void criaFatura(String data, double valor, String nome) {
 
+    public Integer criaFatura(String data, double valor, String nome)  {
+        
+        Fatura fatura = new Fatura(data,valor,nome);
+        if (!faturas.contains(fatura)){
+            faturas.add(fatura);    
+            return this.faturas.indexOf(fatura);
+        }
+
+        return -1;
+        
     }
+
+    public Fatura get(Integer indiceFatura) {
+        return faturas.get(indiceFatura);
+    }
+
+
     
 }
