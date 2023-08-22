@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AppTest {
     private ControllerFatura controllerFatura = new ControllerFatura();
     private ControllerBoleto controllerBoleto = new ControllerBoleto();
+    private App app = new App(controllerFatura);
     
    
     
@@ -19,8 +20,9 @@ public class AppTest {
         controllerBoleto.criaBoleto("237941200815000" , 600.0, "20/10/2018");
         controllerBoleto.criaBoleto("002", 400.0,  "15/08/2023");
         controllerBoleto.criaBoleto("150089", 600.0,  "15/08/2023");
+        app.processarBoletos(0,controllerBoleto);
 
-        App app = new App(controllerFatura,controllerBoleto);
+        
 
         
         
@@ -42,7 +44,9 @@ public class AppTest {
 
     @Test
     void testaProcessarPagamento() {
-        assertEquals(app.getPagamento(1), "PAGA");
+        assertEquals(app.getPagamento(0), "PAGA");
+        assertEquals(app.getTipoPagamento(),"BOLETO");
+        assertEquals(app.getPagamento(1), "NÃO PAGA");
     }
 
 

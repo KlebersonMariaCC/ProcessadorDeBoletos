@@ -12,7 +12,7 @@ public class Fatura {
         this.data = LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         this.nome = nome;
         this.valor = valor;
-        this.status = "NÂO PAGA";
+        this.status = "NÃO PAGA";
 
     }
 
@@ -56,6 +56,18 @@ public class Fatura {
         } else if (!status.equals(other.status))
             return false;
         return true;
+    }
+
+    public double getValor() {
+        return this.valor;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return this.status;
     }
 
 }

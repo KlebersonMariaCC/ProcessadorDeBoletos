@@ -23,4 +23,10 @@ public class ControllerBoleto {
         return -1;
     }
 
+
+
+    public List<Boleto> getBoletos() {
+        return this.boletos;
+    }
+
 }

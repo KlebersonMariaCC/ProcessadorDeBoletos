@@ -49,6 +49,10 @@ public class Boleto {
         return true;
     }
 
+    public double getValor() {
+        return this.valor;
+    }
+
     
 
 }
