@@ -1,9 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import src.ControllerBoleto;
-import src.ControllerFatura;
-import src.App;
+
 
 public class AppTest {
     private ControllerFatura controllerFatura = new ControllerFatura();
