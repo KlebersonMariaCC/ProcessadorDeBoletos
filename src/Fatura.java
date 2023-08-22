@@ -8,8 +8,8 @@ public class Fatura {
     private String nome;
     private String status;
 
-    public Fatura(String data, double valor, String nome) {
-        this.data = LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    public Fatura(LocalDate data, double valor, String nome) {
+        this.data = data;
         this.nome = nome;
         this.valor = valor;
         this.status = "NÃO PAGA";

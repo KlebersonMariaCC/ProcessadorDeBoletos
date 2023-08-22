@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import src.ControllerBoleto;
+import src.ControllerFatura;
+import src.App;
 
 public class AppTest {
     private ControllerFatura controllerFatura = new ControllerFatura();
@@ -12,7 +15,7 @@ public class AppTest {
     
 
     @BeforeEach
-    void newControllerFatura() {
+    void newControllerFatura() throws Exception {
          
         controllerFatura.criaFatura("29/08/2023",1500.0,"João da Silva");
         controllerFatura.criaFatura("10/02/2022", 500, "Kleberson");
@@ -43,7 +46,7 @@ public class AppTest {
     }
 
     @Test
-    void testaProcessarPagamento() {
+    void testaProcessarPagamento() throws Exception {
         assertEquals(app.getPagamento(0), "PAGA");
         assertEquals(app.getTipoPagamento(),"BOLETO");
         assertEquals(app.getPagamento(1), "NÃO PAGA");

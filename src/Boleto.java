@@ -7,10 +7,10 @@ public class Boleto {
     private double valor;
     private LocalDate data;
 
-    public Boleto(String codigo, double valor, String data) {
+    public Boleto(String codigo, double valor, LocalDate data) {
         this.codigo = codigo;
         this.valor = valor;
-        this.data = LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.data = data;
     }
 
     @Override
