@@ -70,4 +70,8 @@ public class Fatura {
         return this.status;
     }
 
+    public Object getNome() {
+        return this.nome;
+    }
+
 }

@@ -12,12 +12,20 @@ public class ControllerFatura {
         this.faturas = new ArrayList<>();
     }
 
-    public Integer criaFatura(String data, double valor, String nome)  {
-        LocalDate dataFormatada = LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        Fatura fatura = new Fatura(dataFormatada,valor,nome);
-        if (!faturas.contains(fatura)){
-            faturas.add(fatura);    
-            return this.faturas.indexOf(fatura);
+    public Integer criaFatura(String data, double valor, String nome) throws Exception  {
+        try {
+            LocalDate dataFormatada = LocalDate.parse(data,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            if(valor >= 0) {
+                Fatura fatura = new Fatura(dataFormatada,valor,nome);
+                if (!faturas.contains(fatura)){
+                    faturas.add(fatura);    
+                    return this.faturas.indexOf(fatura);
+                }
+            }
+
+        
+        } catch (Exception e) {
+            throw new Exception("Formato inválido");
         }
 
         return -1;

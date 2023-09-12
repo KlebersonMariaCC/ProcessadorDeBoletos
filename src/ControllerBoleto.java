@@ -14,13 +14,19 @@ public class ControllerBoleto {
 
 
 
-    public Integer criaBoleto(String codigo, double valor, String data) {
-        LocalDate dataFormatada = LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        Boleto boleto = new Boleto(codigo,valor,dataFormatada);
-        if (!boletos.contains(boleto)){
-            boletos.add(boleto);    
-            return this.boletos.indexOf(boleto);
-        }
+    public Integer criaBoleto(String codigo, double valor, String data) throws Exception {
+       try {
+            LocalDate dataFormatada = LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            if (valor >=0) {
+                Boleto boleto = new Boleto(codigo,valor,dataFormatada);
+                if (!boletos.contains(boleto)){
+                    boletos.add(boleto);    
+                    return this.boletos.indexOf(boleto);
+                }
+            }
+       } catch (Exception e) {
+        throw new Exception("Formato inválido");
+       }
 
         return -1;
     }
