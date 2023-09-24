@@ -1,28 +1,30 @@
 
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ControllerFaturaTest {
+
+public class ControllerFaturaUnitTest {
 
     @Test
     public void testCriaFaturaValorPositivo() throws Exception {
         ControllerFatura controllerFatura = new ControllerFatura();
-        Integer indice = controllerFatura.criaFatura("01/09/2023", 1500.0, "Cliente A");
+        Integer indice = controllerFatura.criaFatura("01/09/2023", 1200.0, "Cliente A");
         assertEquals(0, indice.intValue());
     }
 
     @Test
     public void testCriaFaturaValorZero() throws Exception {
         ControllerFatura controllerFatura = new ControllerFatura();
-        Integer indice = controllerFatura.criaFatura("02/09/2023", 0.0, "Cliente B");
+        Integer indice = controllerFatura.criaFatura("02/12/2023", 0.0, "Cliente B");
         assertEquals(0, indice.intValue());
     }
 
     @Test
     public void testCriaFaturaValorNegativo() throws Exception {
         ControllerFatura controllerFatura = new ControllerFatura();
-        Integer indice = controllerFatura.criaFatura("03/09/2023", -200.0, "Cliente C");
+        Integer indice = controllerFatura.criaFatura("02/12/2023", -200.0, "Cliente C");
         assertEquals(-1, indice.intValue());
     }
 
@@ -30,7 +32,7 @@ public class ControllerFaturaTest {
     public void testCriaFaturaDataInvalida() throws Exception {
         Exception thrown = assertThrows(Exception.class, () -> {
             ControllerFatura controllerFatura = new ControllerFatura();
-            Integer indice = controllerFatura.criaFatura("2023/09/01", 1000.0, "Cliente D"); // Data inválida
+            Integer indice = controllerFatura.criaFatura("arroz", 1000.0, "Cliente D"); // Data inválida
         });
 
         assertEquals("Formato inválido", thrown.getMessage());
@@ -49,6 +51,7 @@ public class ControllerFaturaTest {
     @Test
     public void testGetFaturaInexistente() {
         ControllerFatura controllerFatura = new ControllerFatura();
-        assertThrows(Exception.class, () -> controllerFatura.getFatura(0)); // Índice inválido
+        Exception thrown = assertThrows(Exception.class, () -> controllerFatura.getFatura(0)); // Índice inválido
+        assertEquals("Índice inválido", thrown.getMessage());
     }
 }

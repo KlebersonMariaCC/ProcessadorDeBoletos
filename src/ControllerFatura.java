@@ -36,7 +36,7 @@ public class ControllerFatura {
         try {
              return faturas.get(indiceFatura);
         } catch (Exception e) {
-            throw new Exception("Indice inválido");
+            throw new Exception("Índice inválido");
         }
            
         
